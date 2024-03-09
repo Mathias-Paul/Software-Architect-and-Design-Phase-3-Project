@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Task Management System{% endblock %}</title>
+  <!-- Include any CSS or JS here -->
+</head>
+<body>
+  <header>
+    <!-- Navigation bar -->
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'task_list' %}">Tasks</a></li>
+          <!-- Modify here for logout to use POST method -->
+          <li>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" style="background:none;border:none;padding:0;color:blue;text-decoration:underline;cursor:pointer">Logout</button>
+            </form>
+          </li>
+          <!-- Admin button -->
+          <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    <!-- Content unique to each page -->
+    {% endblock %}
+  </main>
+
+  <footer>
+    <!-- Footer content -->
+  </footer>
+</body>
+</html>
+

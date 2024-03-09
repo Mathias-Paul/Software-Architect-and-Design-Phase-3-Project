@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1>Welcome to the Task Management System</h1>
+  <a href="{% url 'task_list' %}">View Tasks</a>
+  <a href="{% url 'task_create' %}">Create a New Task</a>
+{% endblock %}
+

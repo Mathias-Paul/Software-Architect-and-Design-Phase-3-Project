@@ -1,6 +1,28 @@
+#tasks/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Task
 from .forms import TaskForm
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def logout_view(request):
+    logout(request)
+    return redirect('user_login')  # Or wherever you want to redirect to after logout
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
+
+def home(request):
+    return render(request, 'tasks/home.html', {})
+    
+class UserLoginView(LoginView):
+    template_name = 'tasks/user_login.html'
 
 # Listing tasks
 def task_list(request):

@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +15,9 @@
                 <li>
                     <strong>Title:</strong> {{ task.title }}<br>
                     <strong>Due Date:</strong> {{ task.due_date }}<br>
-                    <a href="{% url 'task_detail' pk=task.pk %}">View Details</a>
+                    <a href="{% url 'task_detail' pk=task.pk %}">View Details</a> |
+                    <a href="{% url 'task_update' pk=task.pk %}">Edit</a> |
+                    <a href="{% url 'task_delete' pk=task.pk %}">Delete</a>
                 </li>
             {% endfor %}
         </ul>
@@ -21,4 +26,5 @@
     {% endif %}
 </body>
 </html>
+{% endblock content %}
 

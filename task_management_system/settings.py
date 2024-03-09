@@ -1,8 +1,11 @@
+#settings.py
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Print out the actual path to the templates directory
+print(BASE_DIR / 'tasks' / 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -15,6 +18,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Login Page
+
+LOGIN_URL = 'user_login'
+LOGIN_REDIRECT_URL = 'home'
+
+#Logout
+LOGOUT_REDIRECT_URL = 'login'  # Redirects to login URL after logout
 
 # Application definition
 
@@ -43,7 +53,7 @@ ROOT_URLCONF = 'task_management_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'tasks' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +98,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
