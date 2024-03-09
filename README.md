@@ -1,5 +1,6 @@
 # Task Management System
 
+HEAD
 The Task Management System is a Django-based web application designed to help users manage their tasks efficiently. It allows users to create, update, delete, and view tasks, providing a straightforward interface for task management. The application supports user authentication, enabling personal task lists for individual users.
 
 ## Features
@@ -59,4 +60,3 @@ To run the Task Management System on your local machine, follow these steps:
 8. **Access the Application**: Open a web browser and navigate to `http://127.0.0.1:8000/` to access the Task Management System. Use the admin panel at `http://127.0.0.1:8000/admin/` to manage users and tasks.
 
 For detailed documentation and more information on the features, refer to the Django documentation and the project's codebase.
-
